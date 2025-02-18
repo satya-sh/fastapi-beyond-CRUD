@@ -1,50 +1,50 @@
-# name: Conventional Commits
+name: Conventional Commits
 
-# on:
-#   pull_request:
+on:
+  pull_request:
 
-# jobs:
-#   build:
-#     name: Conventional Commits
-#     runs-on: ubuntu-latest
-#     environment: Satya Secrets
-#     steps:
-#       - name: Checkout Code
-#         uses: actions/checkout@v4
+jobs:
+  build:
+    name: Conventional Commits
+    runs-on: ubuntu-latest
+    environment: Satya Secrets
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-#       - name: Check Commit Messages with action
-#         uses: webiny/action-conventional-commits@v1.3.0
+      - name: Check Commit Messages with action
+        uses: webiny/action-conventional-commits@v1.3.0
 
-#       - name: Send failure notification if invalid commit messages
-#         if: failure()
-#         uses: dawidd6/action-send-mail@v4
-#         with:
-#           server_address: ${{ secrets.MAIL_SERVER }}
-#           server_port: ${{ secrets.MAIL_PORT }}
-#           username: ${{ secrets.MAIL_USERNAME }}
-#           password: ${{ secrets.MAIL_PASSWORD }}
-#           subject: "❌ PR #${{ github.event.pull_request.number }}: Commit message format issue"
-#           to: ssharma71@dons.usfca.edu
-#           from: "${{ secrets.MAIL_FROM_NAME }} <${{ secrets.MAIL_FROM }}>"
-#           body: |
-#             Hello ${{ github.event.pull_request.user.login }},
+      - name: Send failure notification if invalid commit messages
+        if: failure()
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: ${{ secrets.MAIL_SERVER }}
+          server_port: ${{ secrets.MAIL_PORT }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "❌ PR #${{ github.event.pull_request.number }}: Commit message format issue"
+          to: ssharma71@dons.usfca.edu
+          from: "${{ secrets.MAIL_FROM_NAME }} <${{ secrets.MAIL_FROM }}>"
+          body: |
+            Hello ${{ github.event.pull_request.user.login }},
 
-#             Your pull request #${{ github.event.pull_request.number }} does not follow the Conventional Commits format.
+            Your pull request #${{ github.event.pull_request.number }} does not follow the Conventional Commits format.
 
-#             Please update your commit messages to follow the format. See here for more details: https://www.conventionalcommits.org/en/v1.0.0/
+            Please update your commit messages to follow the format. See here for more details: https://www.conventionalcommits.org/en/v1.0.0/
 
-#             Thanks,
-#             GitHub Actions Bot
+            Thanks,
+            GitHub Actions Bot
 
-#       - name: Close PR if invalid
-#         if: failure()
-#         uses: actions/github-script@v7
-#         with:
-#           github-token: ${{ secrets.GITHUB_TOKEN }}
-#           script: |
-#             github.rest.pulls.update({
-#               owner: context.repo.owner,
-#               repo: context.repo.repo,
-#               pull_number: context.payload.pull_request.number,
-#               state: "closed"
-#             });
+      - name: Close PR if invalid
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              state: "closed"
+            });
