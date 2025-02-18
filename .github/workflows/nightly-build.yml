@@ -2,7 +2,7 @@ name: Nightly Build and Push to DockerHub
 
 on:
   schedule:
-    - cron: "35 16 * * *"
+    - cron: "38 16 * * *"
   workflow_dispatch:
 
 jobs:
