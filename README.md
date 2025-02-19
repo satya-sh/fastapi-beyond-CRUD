@@ -59,7 +59,7 @@ Use the following Repo for this assignment. Fork the repo and make the necessary
 6. **Created GitHub Actions workflows in `.github/workflows/`**:
    - `check-conventional-commit.yml`
    - `nightly-build.yml`
-7. Created GitHub secrets for .nv variables and docker varibles to work with the workflows.
+7. Created GitHub secrets for .env variables and docker varibles to work with the workflows.
 
 ---
 
