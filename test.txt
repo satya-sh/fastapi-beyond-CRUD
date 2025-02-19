@@ -1,1 +1,1 @@
-testing for conventional commit.
+testing for bad conventional commit.
