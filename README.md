@@ -69,6 +69,7 @@ Use the following Repo for this assignment. Fork the repo and make the necessary
    ```sh
    docker compose up
    ```
+3. Application will then be visible on http://localhost:8000/api/v1/docs
 
 ---
 
